@@ -169,6 +169,12 @@ function AdminLayout() {
     }
   };
 
+  const closeWindow = () => {
+    window.opener = null;
+    window.open("", "_self");
+    window.close();
+  };
+
   const claimPct = async (walletAddress) => {
     console.log(
       "globalState.gasPrice.toString()",
@@ -240,111 +246,34 @@ function AdminLayout() {
   });
 
   return (
-    <Aux>
-      <Row
-        className="justify-content-md-center"
-        style={{
-          background: "white",
-          margin: "0px 0px 20px 0px",
-          boxShadow: "0px 2px 5px 2px #eee",
-        }}
-      >
-        <Col xs={12} xl={11}>
-          <Navbar bg="transparent" expand="lg">
-            <Link to="/">
-              <Navbar.Brand style={{ background: "transparent" }}>
-                <img
-                  alt=""
-                  src={PCTbrandLogo}
-                  width="30"
-                  height="30"
-                  className="d-inline-block align-top"
-                />
-                Percent
-              </Navbar.Brand>
-            </Link>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="mr-auto"></Nav>
-              <Nav className="mr-true">
-                {/* <Nav.Link href="https://rewards.percent.finance">
-                  Rewards
-                </Nav.Link> */}
-                <Nav.Link
-                  href="https://gov.percent.finance/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Governance
-                </Nav.Link>
-                <Nav.Link
-                  href="https://github.com/chainsulting/Smart-Contract-Security-Audits/blob/master/Percent%20Finance/02_Smart%20Contract%20Audit%20Percent%20Finance.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Audit
-                </Nav.Link>
-                <Nav.Link
-                  href="https://github.com/percent-finance"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  GitHub
-                </Nav.Link>
-                <Nav.Link
-                  href="https://twitter.com/PercentFinance"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Twitter
-                </Nav.Link>
-                <Nav.Link
-                  href="https://medium.com/percent-finance"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Medium
-                </Nav.Link>
-                <Nav.Link
-                  href="https://percent.substack.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Substack
-                </Nav.Link>
-                <Nav.Link
-                  href="https://discord.gg/3sxWhH3"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Discord
-                </Nav.Link>
-              </Nav>
-              <Nav style={{ margin: "0px 40px 0px 0px" }}></Nav>
-              <PctButton />
-              <ConnectButton />
-            </Navbar.Collapse>
-          </Navbar>
-        </Col>
-      </Row>
-      <Row className="justify-content-sm-center" style={{ margin: "0px 3px 100px 3px", height: "10px" }}>
-        <Col xs={12} xl={11}>
-          <div style={{textAlign: "center", color: "red", fontSize: "1.5rem"}}>
-              <div>Money market outage, please read <a href="https://percent-finance.medium.com/percent-finance-incident-post-mortem-d4e419cf35ab" class="active">HERE</a>.</div>
-              <div>All functionality currently paused while we work out the next steps.</div>
+    <Aux style={{height: '100%'}}>
+      <div class="window" style={{width: '100%', height: '100%'}}>
+        <div class="title-bar">
+          <div class="title-bar-text">LendOS</div>
+          <div class="title-bar-controls">
+            <button aria-label="Minimize"></button>
+            <button aria-label="Maximize"></button>
+            <button aria-label="Close"></button>
           </div>
-        </Col>
-      </Row>
-      <Row className="justify-content-md-center" style={{ margin: "0px 3px 100px 3px" }}>
-        <Col xs={12} xl={11}>
-          {menu}
-        </Col>
-        
-      </Row>
-      <OtherSnackbar open={otherSnackbarOpen} message={otherSnackbarMessage} onClose={(event, reason) => { if (reason === "clickaway") { return;}
-          setOtherSnackbarOpen(false);
-        }}
-      />
+        </div>
+        <div class="window-body">
+          <article role="tabpanel" id="lend">
+            <Row className="justify-content-md-center" style={{ margin: "0px 3px 100px 3px", height: '100%' }}>
+              <Col xs={12} xl={11}>
+                {menu}
+              </Col>
+            </Row>
+            <OtherSnackbar open={otherSnackbarOpen} message={otherSnackbarMessage} onClose={(event, reason) => { if (reason === "clickaway") { return;}
+                setOtherSnackbarOpen(false);
+              }}
+            />
+          </article>
+          <section className="field-row" style={{justifyContent: 'flex-end'}}>
+            <a href="https://twitter.com" target="_blank" rel="noreferrer"><button>twitter.com</button></a>
+            <a href="https://github.com" target="_blank" rel="noreferrer"><button>github.com</button></a>
+          </section>
+        </div>
+      </div>
     </Aux>
   );
 }

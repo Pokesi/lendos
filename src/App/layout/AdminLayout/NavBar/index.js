@@ -6,6 +6,7 @@ import NavRight from "./NavRight";
 import Aux from "../../../../hoc/_Aux";
 import DEMO from "../../../../store/constant";
 import * as actionTypes from "../../../../store/actions";
+import "xp.css/dist/XP.css";
 
 class NavBar extends Component {
     render() {
@@ -21,8 +22,9 @@ class NavBar extends Component {
 
         return (
             <Aux>
+
                 <header className={headerClass.join(' ')}>
-                    <div className="m-header">
+                    {/*}<div className="m-header">
                         <a className={toggleClass.join(' ')} id="mobile-collapse1" href={DEMO.BLANK_LINK} onClick={this.props.onToggleNavigation}><span/></a>
                         <a href={DEMO.BLANK_LINK} className="b-brand">
                             <div className="b-bg">
@@ -35,6 +37,19 @@ class NavBar extends Component {
                     <div className="collapse navbar-collapse">
                         <NavLeft/>
                         <NavRight rtlLayout={this.props.rtlLayout} />
+                    </div>*/}
+                    <div class="window" style="width: 300px">
+                      <div class="title-bar"> 
+                        <div class="title-bar-text">A Window With Stuff In It</div>
+                        <div class="title-bar-controls">
+                          <button aria-label="Minimize"></button>
+                          <button aria-label="Maximize"></button>
+                          <button aria-label="Close"></button>
+                        </div>
+                      </div>
+                      <div class="window-body">
+                        <p>There's so much room for activities!</p>
+                      </div>
                     </div>
                 </header>
             </Aux>

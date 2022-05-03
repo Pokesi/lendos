@@ -26,6 +26,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import * as colors from "@material-ui/core/colors";
 import PCTlogo from "../../assets/images/PCT-logo.png";
 import ETHlogo from "../../assets/images/ETH-logo.png";
+import "xp.css/dist/XP.css";
 // import Alert from "@material-ui/lab/Alert";
 
 import { chainIdToName, ethDummyAddress } from "../../constants";
@@ -87,7 +88,7 @@ function Dashboard() {
     console.log("updateData start");
 
     const comptrollerAddress = process.env.REACT_APP_COMPTROLLER_ADDRESS;
-    
+
     const allMarkets = await Compound.eth.read(
       comptrollerAddress,
       "function getAllMarkets() returns (address[])",
