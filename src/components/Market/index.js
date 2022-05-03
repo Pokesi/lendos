@@ -2171,10 +2171,6 @@ function Dashboard() {
           margin: "0px 0px 8px 0px",
         }}
       />
-      {/* <Alert severity="success" style={{ margin: "0px 0px 15px 0px" }}>
-        <span>PCT rewards collection has resumed normal.</span>
-      </Alert> */}
-      {/* <WarningDialog /> */}
       <SupplyDialog
         open={supplyDialogOpen}
         selectedMarketDetails={selectedMarketDetails}
@@ -2200,11 +2196,17 @@ function Dashboard() {
           setOtherSnackbarOpen(false);
         }}
       />
+      <div class="title-bar">
+        <div className="title-bar-text">Market Overview</div>
+        <div class="title-bar-controls">
+          <button aria-label="Close"></button>
+        </div>
+      </div>
       <Card>
         <Card.Body style={{ padding: "20px 20px 0px 20px" }}>
           <Row>
             <Col xs={12} lg style={{ margin: "0px 0px 20px 0px" }}>
-              <h6>Market Overview</h6>
+              {/*<h6>Market Overview</h6>*/}
               <div className="row d-flex align-items-center">
                 <div className="col-12">
                   <h3
@@ -2445,12 +2447,15 @@ function Dashboard() {
           </Card>
         </Col>
       </Row> */}
+      <div class="title-bar">
+        <div className="title-bar-text">Supply Market</div>
+        <div class="title-bar-controls">
+          <button aria-label="Close"></button>
+        </div>
+      </div>
       <Row>
-        <Col xs={12} xl={6}>
+        <Col xs={12} xl={12}>
           <Card className="Recent-Users">
-            <Card.Header style={{ borderBottom: "none" }}>
-              <Card.Title as="h5">Supply Markets</Card.Title>
-            </Card.Header>
             <Card.Body className="px-0 py-2">
               <Table responsive hover style={{ marginBottom: "0px" }}>
                 <tbody>
@@ -2529,11 +2534,16 @@ function Dashboard() {
             </Card.Body>
           </Card>
         </Col>
-        <Col xs={12} xl={6}>
+        </Row>
+        <div class="title-bar">
+          <div className="title-bar-text">Borrow Markets</div>
+          <div class="title-bar-controls">
+            <button aria-label="Close"></button>
+          </div>
+        </div>
+        <Row>
+        <Col xs={12} xl={12}>
           <Card className="Recent-Users">
-            <Card.Header style={{ borderBottom: "none" }}>
-              <Card.Title as="h5">Borrow Markets</Card.Title>
-            </Card.Header>
             <Card.Body className="px-0 py-2">
               <Table responsive hover style={{ marginBottom: "0px" }}>
                 <tbody>

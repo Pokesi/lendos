@@ -28,7 +28,7 @@ const Compound = require("@compound-finance/compound-js/dist/nodejs/src/index.js
 function AdminLayout() {
   const { state: globalState } = useContext(store);
   const triedEager = useEagerConnect();
-  const { account, library, activate, deactivate, active } = useWeb3React();
+  const { active, account, library, connector, activate, deactivate } = useWeb3React();
   const [pctEarned, setPctEarned] = useState("");
   const [pctBalance, setPctBalance] = useState("");
   const [otherSnackbarOpen, setOtherSnackbarOpen] = useState(false);
@@ -53,20 +53,13 @@ function AdminLayout() {
     return (
       <div>
         {active ? (
-          <Dropdown>
-            <Dropdown.Toggle variant="outline-secondary">
+          <button onClick={() => deactivate()}>
               {getShortenAddress(account)}
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-              <Dropdown.Item onClick={() => deactivate()}>
-                Disconnect
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+          </button>
         ) : (
-          <Button onClick={onConnectClick} variant="outline-secondary">
-            Connect
-          </Button>
+          <button onClick={onConnectClick} variant="outline-secondary">
+             connect wallet
+          </button>
         )}
       </div>
     );
@@ -247,16 +240,16 @@ function AdminLayout() {
 
   return (
     <Aux style={{height: '100%'}}>
-      <div class="window" style={{width: '100%', height: '100%'}}>
-        <div class="title-bar">
-          <div class="title-bar-text">LendOS</div>
-          <div class="title-bar-controls">
+      <div className="window" style={{width: '100%', height: '100%'}}>
+        <div className="title-bar">
+          <div className="title-bar-text">LendOS</div>
+          <div className="title-bar-controls">
             <button aria-label="Minimize"></button>
             <button aria-label="Maximize"></button>
             <button aria-label="Close"></button>
           </div>
         </div>
-        <div class="window-body">
+        <div className="window-body">
           <article role="tabpanel" id="lend">
             <Row className="justify-content-md-center" style={{ margin: "0px 3px 100px 3px", height: '100%' }}>
               <Col xs={12} xl={11}>
@@ -271,6 +264,7 @@ function AdminLayout() {
           <section className="field-row" style={{justifyContent: 'flex-end'}}>
             <a href="https://twitter.com" target="_blank" rel="noreferrer"><button>twitter.com</button></a>
             <a href="https://github.com" target="_blank" rel="noreferrer"><button>github.com</button></a>
+            <ConnectButton />
           </section>
         </div>
       </div>

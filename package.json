@@ -43,7 +43,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "commit": "git add . && git commit -m '5' && git push https://github.com/Pokesi/lendos"
+    "commit": "git pull https://github.com/Pokesi/lendos && git add . && git commit -m '5' && git push https://github.com/Pokesi/lendos"
   },
   "eslintConfig": {
     "extends": "react-app"
