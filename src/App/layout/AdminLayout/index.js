@@ -1,23 +1,36 @@
-import React, { useEffect, useState, useContext } from "react";
-import { Route, Link } from "react-router-dom";
+import './app.scss';
 
-import routes from "../../../routes";
-import Aux from "../../../hoc/_Aux";
-import { Row, Col, Navbar, Nav, Button, Dropdown } from "react-bootstrap";
-import Snackbar from "@material-ui/core/Snackbar";
-import { store } from "../../../store";
+import React, {
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 
-import "./app.scss";
+import {
+  Button,
+  Col,
+  Dropdown,
+  Row,
+} from 'react-bootstrap';
+import { Route } from 'react-router-dom';
 
-import { injected } from "../../../connectors";
-import { useEagerConnect, useInactiveListener } from "../../../hooks";
-import { useWeb3React } from "@web3-react/core";
+import Snackbar from '@material-ui/core/Snackbar';
+import { useWeb3React } from '@web3-react/core';
 
-import { chainIdToName } from "../../../constants";
-import { zeroStringIfNullish, eX } from "../../../helpers";
-
-import PCTlogo from "../../../assets/images/PCT-logo.png";
-import PCTbrandLogo from "../../../assets/images/PCT-brand-logo.png";
+import PCTlogo from '../../../assets/images/PCT-logo.png';
+import { injected } from '../../../connectors';
+import { chainIdToName } from '../../../constants';
+import {
+  eX,
+  zeroStringIfNullish,
+} from '../../../helpers';
+import Aux from '../../../hoc/_Aux';
+import {
+  useEagerConnect,
+  useInactiveListener,
+} from '../../../hooks';
+import routes from '../../../routes';
+import { store } from '../../../store';
 
 const BigNumber = require("bignumber.js");
 BigNumber.config({ EXPONENTIAL_AT: 1e9 });
@@ -240,7 +253,7 @@ function AdminLayout() {
 
   return (
     <Aux style={{height: '100%'}}>
-      <div className="window" style={{width: '100%', height: '100%'}}>
+      <div className="window" style={{marginLeft: "35vh", marginRight: "35vh", maxHeight: "100%"}}>
         <div className="title-bar">
           <div className="title-bar-text">LendOS</div>
           <div className="title-bar-controls">
